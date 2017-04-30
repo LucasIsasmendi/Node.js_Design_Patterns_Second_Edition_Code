@@ -28,5 +28,7 @@ let cb = (err, data) => {
   console.log(data)
 };
 
-readJSON('valid_json.json', cb); // dumps the content
-readJSON('invalid_json.json', cb); // prints error (SyntaxError)
+readJSON('valid_json.json',(err, data) => {
+  cb(err, data);
+  readJSON('invalid_json.json', cb); // prints error (SyntaxError)
+}); // dumps the content
